@@ -1,5 +1,4 @@
 const express = require("express");
-const exphb = require("express-handlebars");
 const mongoose = require("mongoose");
 const cheerio = require("cheerio");
 const axios = require("axios");
@@ -14,7 +13,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
 mongoose.connect(MONGODB_URI);
 
 
-app.get("/", (req, res) => {
+app.get("/scrape", () => {
     axios.get("https://www.npr.org/sections/news/").then(response => {
         const $ = cheerio.load(response.data);
        
@@ -39,14 +38,46 @@ app.get("/", (req, res) => {
                 .children("h2")
                 .children("a")
                 .attr("href");
+                db.Article.create(result);
+            });
+       });
+});
 
-                db.Article.create(result).then(dbArticle => {
-                    console.log(dbArticle)
-                })
-            })
-      
-        
+app.get("/articles", (req, res) => {
+    db.Article.find().sort({_id:-1}).then((dbArticle) => {
+        res.json(dbArticle);
+    });
+});
+
+app.get("/delete", (req, res) => {
+    db.Article.remove({}, (response) => {
+     res.send(response)
+    });
+});
+
+
+app.get("/articles/:id", (req, res) => {
+    db.Article.findOne({ _id: req.params.id })
+    .populate("note")
+    .then(dbArticle => {
+        res.json(dbArticle)
+    });
+});
+
+app.post("/articles/:id", (req, res) => {
+    db.Note.create(req.body).then(dbNote => {
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, {note: dbNote._id }, { new: true});
+    }).then(dbArticle => {
+        res.json(dbArticle)
     })
+})
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html")
+})
+
+app.get("/saved", (req, res) => {
+    res.sendFile(__dirname + "/public/saved.html")
 })
 
 app.listen(PORT, function() {

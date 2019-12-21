@@ -1,20 +1,59 @@
 h1 {
-    margin: 10px;
-    margin-bottom: 20px;
+    margin: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    height: 30px;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
 }
 .container {
     background-color: Black;
-    height: 650px;
+    height: 1680px;
     color: white;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
+   
 }
 
 
 .container2 {
     width: 90%;
     height: 70%;
-    background-color: white;
+    color: black;
+    text-align: left;
+    background-color: black;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
+}
+
+.scrapedArticles {
+    border-style: solid;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+}
+
+.link {
+    color: black;
+}
+
+.npr {
+   height: 40px;
+   width: 140px;
+   display: inline-block;
+   margin-bottom: 20px;
+   margin-top: 5px;
+}
+
+.delete {
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.save {
+    margin-top: 5px;
 }

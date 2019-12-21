@@ -8,7 +8,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Web Scraper</title>
 </head>
 
@@ -16,30 +15,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>NPR SCRAPER</h1>
+                <img class="npr" src="images/aasaassaa.png"><h1>SCRAPER</h1>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn-danger">SCRAPE NEW ARTICLES</button>
+                        <button class="new btn-danger">SCRAPE NEW ARTICLES</button>
+                    </div>
+                    <div class="col-md-4"><a href="/saved">
+                            <button class="saved btn-danger">GO TO SAVED ARTICLES</button>
+                            </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="saved.html">
-                            <button class="btn-danger">GO TO SAVED ARTICLES</button>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn-danger">DELETE SCRAPED ARTICLES</button>
+                        <button class="btn-danger delete">DELETE SCRAPED ARTICLES</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row container2">
-            <div class="col-md-12">
+            <div class="scraped col-md-12">
 
             </div>
         </div>
     </div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
