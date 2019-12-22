@@ -64,6 +64,12 @@ app.get("/articles/:id", (req, res) => {
     });
 });
 
+app.delete("/delete/:id", (req, res) => {
+    db.Article.deleteOne({ _id: req.params.id}).then(function(result) {
+        res.json(result)
+    })
+})
+
 app.post("/articles/:id", (req, res) => {
     db.Note.create(req.body).then(dbNote => {
         return db.Article.findOneAndUpdate({ _id: req.params.id }, {note: dbNote._id }, { new: true});
