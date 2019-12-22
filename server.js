@@ -8,9 +8,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
-
-mongoose.connect(MONGODB_URI);
 
 
 app.get("/scrape", () => {
@@ -89,3 +86,7 @@ app.get("/saved", (req, res) => {
 app.listen(PORT, function() {
     console.log("App running on server " + "http://localhost:" + PORT)
 })
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
+
+mongoose.connect(MONGODB_URI);
